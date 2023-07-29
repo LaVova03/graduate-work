@@ -1,0 +1,10 @@
+.Login {
+  text-align: center;
+}
+
+.login-logo {
+  position: absolute;
+  width: 200px;
+  top: 100px;
+  left: 570px;
+}
