@@ -1,11 +1,9 @@
 .button_login {
-    position: absolute;
-    top: 370px;
-    left: 570px;
     width: 200px;
     height: 40px;
     text-align: center;
     background-color: #44B26F;
     border: 0;
     color: white;
+    margin: 15px;
 }
