@@ -1,0 +1,55 @@
+#product-card {
+    height: 500px;
+    background: #44B26F;
+    padding: 22px;
+}
+
+#buttons {
+    width: 1344px;
+    height: 100px;
+    display: inline-flex;
+}
+
+#button_left {
+    width: 200px;
+    height: 100px;
+    margin: 0 68% 0 0;
+}
+
+#button_right {
+    width: 200px;
+    height: 100px;
+}
+
+#logo_1 {
+    position: absolute;
+    left: 55px;
+    height: 25px;
+    width: 25px;
+    top: 105px;
+}
+
+#logo_2 {
+    position: absolute;
+    left: 1150px;
+    height: 40px;
+    width: 40px;
+    top: 100px;
+}
+
+#products {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center;
+    margin: 0;
+}
+
+.container {
+    width: 1300px;
+    height: 200px;
+    text-align: center;
+}

@@ -2,8 +2,8 @@ import './input.css';
 
 const InputLogin = (props) => {
     return (
-        <input isLogin={props.isLogin === true ? "input_login" : "input_password"}
-            placeholder={props.isLogin === true ? "User Name" : "Password"} />
+        <input islogin={props.islogin === true ? "input_login" : "input_password"}
+            placeholder={props.islogin === true ? "User Name" : "Password"} />
     );
 };
 

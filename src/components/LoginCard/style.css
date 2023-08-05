@@ -5,3 +5,22 @@
     text-align: center;
     padding: 50px;
 }
+
+.eaeOpen {
+    position: absolute;
+    width: 40px;
+    height: 22px;
+    top: 334px;
+    left: 724px;
+    color: #44B26F;
+    display: none;
+}
+
+.eaeClose {
+    position: absolute;
+    width: 40px;
+    height: 22px;
+    top: 334px;
+    left: 724px;
+    color: #44B26F;
+}
