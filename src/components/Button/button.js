@@ -2,7 +2,7 @@ import './button.css';
 
 const Button = (props) => {
     return (
-        <button className={props.className === true ? 'button_login' : 'button_table'}>{props.children}</button>
+        <button className={props.isLogin ? 'button_login' : 'button_table'}>{props.children}</button>
     );
 };
 

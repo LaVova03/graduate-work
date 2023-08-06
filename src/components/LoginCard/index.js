@@ -9,11 +9,11 @@ const LoginCard = () => {
     return (
         <div id="login-card">
             <img src={logoRozetka} className="login-logo" alt="logo" />
-            <Input islogin={true} />
-            <Input islogin={false} />
+            <Input isLogin />
+            <Input isLogin={false} />
             <ImEye className='eaeOpen' />
             <ImEyeBlocked className='eaeClose' />
-            <Button className={true} >Login</Button>
+            <Button isLogin >Login</Button>
         </div >
     );
 };
