@@ -1,9 +1,9 @@
-import './TableCard.css'
-import RozetkaWhite from '../../img/RozetkaWhite.png';
-import Button from '../../components/Button/button';
+import './TableCard.css';
+import RozetkaWhite from '../../assets/RozetkaWhite.png';
+import Button from '../../components/Button/Button';
 import { ImUser } from "react-icons/im";
 import { IoIosAdd } from "react-icons/io";
-import Table from '../Table/Table'
+import Table from '../Table/Table';
 
 
 const TableCard = () => {
