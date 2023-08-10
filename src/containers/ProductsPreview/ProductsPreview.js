@@ -65,7 +65,7 @@ function ProductsPreview(props) {
       <div className='cards'>
         {arr.map(data => {
           return (
-            <Card data={data} />
+            <Card data={data} key={data.id} />
           )
         })}
       </div>
