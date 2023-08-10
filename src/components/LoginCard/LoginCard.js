@@ -9,7 +9,7 @@ const LoginCard = () => {
         <div id="login-card">
             <img src={logoRozetka} className="login-logo" alt="logo" />
             <Input isLogin />
-            <Input isLogin={false} isPassword/>
+            <Input isPassword/>
             <Button isLogin >Login</Button>
         </div >
     );
