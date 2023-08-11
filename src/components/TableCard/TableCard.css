@@ -22,19 +22,19 @@
 }
 
 #logo_1 {
-    position: absolute;
-    left: 55px;
+    position: relative;
+    left: 25px;
     height: 25px;
     width: 25px;
-    top: 105px;
+    top: -54px;
 }
 
 #logo_2 {
-    position: absolute;
-    left: 1150px;
+    position: relative;
+    left: 13px;
     height: 40px;
     width: 40px;
-    top: 100px;
+    top: -60px;
 }
 
 #products {

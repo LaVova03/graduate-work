@@ -1,0 +1,74 @@
+.container_card {
+    width: 250px;
+    height: 350px;
+    background-color: white;
+    margin: 20px
+}
+
+
+#img {
+    background: url(../../assets/lenovo.jpg);
+    width: 209px;
+    height: 139px;
+    margin: 20px auto;
+}
+
+#name {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    line-height: normal;
+    margin: 20px;
+    font-weight: 700;
+}
+
+#price {
+    width: 50px;
+    color: #FC5B00;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 20px;
+}
+
+#quantity {
+    position: relative;
+    top: -60px;
+    float: right;
+    width: 106px;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 20px;
+}
+
+#logo {
+    background: url(../../assets/Cart4.png);
+    width: 35px;
+    height: 28px;
+    margin: 45px 29px 16px 20px;
+}
+
+#basket {
+    position: relative;
+    top: -60px;
+    float: right;
+    white-space: nowrap;
+    height: 20px;
+    color: #05BC52;
+    text-align: center;
+    font-family: Inter;
+    font-size: 17px;
+    font-style: normal;
+    line-height: normal;
+    margin: 20px 30px 20px 0;
+    font-weight: 500;
+}

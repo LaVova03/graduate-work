@@ -1,0 +1,20 @@
+.list_product {
+    height: 900px;
+    background: #44B26F;
+    padding: 22px;
+}
+
+.cards {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-between;
+    width: 900px;
+}
+
+
+.image_card {
+    width: 200px;
+    padding: 0 0 20px;
+}
