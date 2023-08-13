@@ -1,0 +1,31 @@
+.modal__wrapper {
+    position: absolute;
+    width: 200px;
+    height: 20px;
+    border: solid red;
+}
+
+#oneModal {
+    top: 276px;
+    left: 569px;
+}
+
+#twoModal {
+    top: 348px;
+    left: 569px;
+}
+
+.modal__wrapper.open {
+    height: 20px;
+    display: block;
+}
+
+.modal__wrapper.close {
+    height: 0;
+    display: none;
+}
+
+p {
+    margin: 0;
+    color: red;
+}
