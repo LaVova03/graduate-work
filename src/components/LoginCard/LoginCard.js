@@ -8,7 +8,10 @@ import NoSuchUser from '../NoSuchUser/NoSuchUser';
 
 
 const LoginCard = () => {
-    const [inputs, setInputs] = useState({});
+    const [inputs, setInputs] = useState({
+        UserName: '',
+        Password: ''
+    });
     const [modal, setModal] = useState({
         modal1: false,
         modal2: false,
@@ -35,9 +38,9 @@ const LoginCard = () => {
         } else {
             setModal(modal => ({ ...modal, modal2: false }));
         } if (inputs.UserName === 'admin' && inputs.Password === 'password') {
-            localStorage.setItem("token", "gffsdfg1111111111fsfdsfgf");
-            setModal(modal => ({ ...modal, modal3: false }));
-        } else if ((inputs.UserName !== 'admin' && inputs.UserName !== '') && (inputs.Password !== 'password' && inputs.Password !== '')) {
+            localStorage.setItem("token", "gffsdf1fsfdsfgf");
+            setModal(modal => ({ ...modal, modal3: false }))
+        } if ((inputs.UserName !== 'admin' && inputs.UserName !== '') && (inputs.Password !== 'password' && inputs.Password !== '')) {
             setModal(modal => ({ ...modal, modal3: true }));
         };
     };
