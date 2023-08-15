@@ -4,9 +4,25 @@ import Button from '../../components/Button/Button';
 import { ImUser } from "react-icons/im";
 import { IoIosAdd } from "react-icons/io";
 import Table from '../Table/Table';
+import { useEffect, useState } from 'react';
 
 
-const TableCard = () => {
+const TableCard = (props) => {
+    const [goods, setGoods] = useState([]);
+
+    useEffect(() => {
+        sendRequest();
+    }, []);
+
+    const sendRequest = async () => {
+        const response = await fetch('https://64980a639543ce0f49e198cf.mockapi.io/Goods');
+        const data = await response.json();
+
+        if (response.ok) {
+            setGoods(data)
+        }
+    }
+
     return (
         <div id="product-card" >
             <img src={RozetkaWhite} className="login-logo" alt="logo" />
@@ -22,7 +38,7 @@ const TableCard = () => {
             </div>
             <h1 id='products'>Products</h1>
             <div className='container'>
-                <Table />
+                <Table goods={goods} />
             </div>
         </div >
     );

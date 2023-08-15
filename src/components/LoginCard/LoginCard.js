@@ -23,27 +23,31 @@ const LoginCard = () => {
         const name = event.target.name;
         const value = event.target.value;
         setInputs(values => ({ ...values, [name]: value }));
+
+        if (!inputs.UserName) {
+            setModal(modal => ({ ...modal, modal1: false }));
+        };
+        if (!inputs.Password) {
+            setModal(modal => ({ ...modal, modal2: false }));
+        }; if ((inputs.UserName !== 'admin' && inputs.UserName !== '') && (inputs.Password !== 'password' && inputs.Password !== '')) {
+            setModal(modal => ({ ...modal, modal3: false }));
+        };
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
         if (!inputs.UserName) {
             setModal(modal => ({ ...modal, modal1: true }));
-            setModal(modal => ({ ...modal, modal3: false }));
-        } else {
-            setModal(modal => ({ ...modal, modal1: false }));
         } if (!inputs.Password) {
             setModal(modal => ({ ...modal, modal2: true }));
-            setModal(modal => ({ ...modal, modal3: false }));
-        } else {
-            setModal(modal => ({ ...modal, modal2: false }));
         } if (inputs.UserName === 'admin' && inputs.Password === 'password') {
-            localStorage.setItem("token", "gffsdf1fsfdsfgf");
-            setModal(modal => ({ ...modal, modal3: false }))
+            localStorage.setItem("token", "gffsdfvcb1fsfdsfgf");
         } if ((inputs.UserName !== 'admin' && inputs.UserName !== '') && (inputs.Password !== 'password' && inputs.Password !== '')) {
             setModal(modal => ({ ...modal, modal3: true }));
         };
     };
+    
     return (
         <div id="login-card">
             <img src={logoRozetka} className="login-logo" alt="logo" />

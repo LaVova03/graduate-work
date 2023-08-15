@@ -2,7 +2,8 @@ import './ProductsTable.css';
 import TableCard from '../../components/TableCard/TableCard';
 
 
-function ProductsTable() {
+function ProductsTable(props) {
+
   return (
     <div className="list">
       <TableCard />
