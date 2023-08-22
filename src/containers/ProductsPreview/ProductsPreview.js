@@ -1,21 +1,8 @@
 import './ProductsPreview.css';
 import Card from '../../components/Card/Card';
 import RozetkaWhite from '../../assets/RozetkaWhite.png';
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from 'react';
-
 
 function ProductsPreview(props) {
-  const navigate = useNavigate();
-  const [count, setCount] = useState('');
-
-
-  useEffect(() => {
-    if (count) {
-      navigate(`/preview/:${count}`)
-    }
-  });
-
 
   const arr = [{
     id: 1,
@@ -78,7 +65,7 @@ function ProductsPreview(props) {
       <div className='cards'>
         {arr.map(data => {
           return (
-            <Card data={data} key={data.id} setCount={setCount} />
+            <Card data={data} key={data.id} />
           )
         })}
       </div>

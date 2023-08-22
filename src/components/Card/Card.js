@@ -1,9 +1,12 @@
 import './Card.css';
+import { useNavigate } from "react-router-dom";
 
-const Card = ({ data, setCount}) => {
+
+const Card = ({ data }) => {
+    const navigate = useNavigate();
 
     return (
-        <button onClick={() => setCount(`${data.id}`)} key={data.id} className='container_card'>
+        <button onClick={() => navigate(`/preview/:${data.id}`)} key={data.id} className='container_card'>
             <div id='img'>{data.img}</div>
             <div id='name'>{data.name}</div>
             <div id='price'>{data.price}</div>
