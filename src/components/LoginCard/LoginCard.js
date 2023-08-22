@@ -5,6 +5,7 @@ import Button from '../../components/Button/Button';
 import { useState } from 'react';
 import ErrorWindow from '../ErrorWindow/ErrorWindow';
 import NoSuchUser from '../NoSuchUser/NoSuchUser';
+import { useNavigate } from "react-router-dom";
 
 
 const LoginCard = () => {
@@ -17,6 +18,7 @@ const LoginCard = () => {
         modal2: false,
         modal3: false
     });
+    const navigate = useNavigate();
 
 
     const handleChange = (event) => {
@@ -43,11 +45,12 @@ const LoginCard = () => {
             setModal(modal => ({ ...modal, modal2: true }));
         } if (inputs.UserName === 'admin' && inputs.Password === 'password') {
             localStorage.setItem("token", "gffsdfvcb1fsfdsfgf");
+            navigate("/products");
         } if ((inputs.UserName !== 'admin' && inputs.UserName !== '') && (inputs.Password !== 'password' && inputs.Password !== '')) {
             setModal(modal => ({ ...modal, modal3: true }));
         };
     };
-    
+
     return (
         <div id="login-card">
             <img src={logoRozetka} className="login-logo" alt="logo" />

@@ -1,11 +1,11 @@
 #product-card {
-    height: 500px;
+    height: 599px;
     background: #44B26F;
     padding: 22px;
 }
 
 #buttons {
-    width: 1349px;
+    width: 1340px;
     height: 100px;
     display: inline-flex;
 }
@@ -52,4 +52,35 @@
     width: 1300px;
     height: 200px;
     text-align: center;
+}
+
+.modalAdd {
+    padding: 10px;
+    position: absolute;
+    left: 37%;
+    top: 100px;
+    text-align: center;
+    background-color: white;
+    height: 400px;
+    width: 300px;
+}
+
+.modal-title{
+    color: #D9D9D9;
+    font-family: Inter;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+}
+
+.btn-close{
+    position: absolute;
+    background: url(../../assets/Vector.png);
+    width: 23px;
+    height: 23px;
+    border: 0;
+    top: 10px;
+    left: 285px;
 }
