@@ -3,11 +3,11 @@ import { IoMdCreate } from "react-icons/io";
 import { BsArrowDownUp } from "react-icons/bs";
 import './Table.css';
 
-const Table = () => {
+const Table = ({ goods }) => {
     return (
         <table className='table'>
             <thead>
-                <tr id='first'>
+                <tr>
                     <th>ID<BsArrowDownUp id='icon' /></th>
                     <th>Category<BsArrowDownUp id='icon' /></th>
                     <th>Name<BsArrowDownUp id='icon' /></th>
@@ -16,45 +16,23 @@ const Table = () => {
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
-                <tr id='second'>
-                    <td>0</td>
-                    <td>PC</td>
-                    <td>Lenovo Y50-70</td>
-                    <td>5</td>
-                    <td>25,000.00</td>
-                    <td id="last">
-                        <IoIosArchive />
-                        <IoMdCreate />
-                    </td>
-                </tr>
-            </tbody>
-            <tbody id='therd'>
-                <tr>
-                    <td>1</td>
-                    <td>Clothes</td>
-                    <td>Nike M Nk Df Acd21</td>
-                    <td>22</td>
-                    <td>4,000.00</td>
-                    <td id="last">
-                        <IoIosArchive />
-                        <IoMdCreate />
-                    </td>
-                </tr>
-            </tbody>
-            <tbody id='second'>
-                <tr>
-                    <td>2</td>
-                    <td>Plumbing</td>
-                    <td>CERSANIT MITO 17</td>
-                    <td>1337</td>
-                    <td>5,000.00</td>
-                    <td id="last">
-                        <IoIosArchive />
-                        <IoMdCreate />
-                    </td>
-                </tr>
-            </tbody>
+            {goods.map(data => {
+                return (
+                    <tbody key={data.id}>
+                        <tr>
+                            <td>{data.id}</td>
+                            <td>{data.Category}</td>
+                            <td>{data.Name}</td>
+                            <td>{data.Quantity}</td>
+                            <td>{data.Price}</td>
+                            <td id="last">
+                                <IoIosArchive />
+                                <IoMdCreate />
+                            </td>
+                        </tr>
+                    </tbody>
+                )
+            })}
         </table>
     );
 };

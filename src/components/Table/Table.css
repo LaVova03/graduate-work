@@ -11,22 +11,28 @@
     line-height: normal;
 }
 
-#first {
+.table>:first-child {
     height: 50px;
     color: #726969;
     background: #0EC86F;
 }
 
-#second {
+.table>:nth-child(2) {
     height: 50px;
     color: #FFF;
     background: #D9D9D9;
 }
 
-#therd {
+.table>:nth-child(3) {
     height: 50px;
     color: #A58F8F;
     background: #0EC86F;
+}
+
+.table>:nth-child(4) {
+    height: 50px;
+    color: #FFF;
+    background: #D9D9D9;
 }
 
 #last {
