@@ -1,7 +1,7 @@
 import './LoginCard.css';
 import logoRozetka from '../../assets/logoRozetka.png';
 import Input from '../../components/Input/Input';
-import Button from '../../components/Button/Button';
+import ButtonLogin from '../../components/ButtonLogin/ButtonLogin';
 import { useState } from 'react';
 import ErrorWindow from '../ErrorWindow/ErrorWindow';
 import NoSuchUser from '../NoSuchUser/NoSuchUser';
@@ -63,7 +63,7 @@ const LoginCard = () => {
                     isPassword
                     value={inputs || ""}
                     onChange={handleChange} />
-                <Button isLogin type="submit">Login</Button>
+                <ButtonLogin type="submit">Login</ButtonLogin>
             </form >
             <ErrorWindow isOpened={modal.modal1} />
             <ErrorWindow isPassword isOpened={modal.modal2} />

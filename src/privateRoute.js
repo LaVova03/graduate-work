@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 
 
-const PrivateRoute = ({ redirectPath = './' }) => {
+const PrivateRoute = ({ redirectPath = './login' }) => {
     if (!localStorage.getItem('token')) {
         return <Navigate to={redirectPath} replace />
     };

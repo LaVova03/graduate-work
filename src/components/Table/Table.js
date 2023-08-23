@@ -26,8 +26,8 @@ const Table = ({ goods }) => {
                             <td>{data.Quantity}</td>
                             <td>{data.Price}</td>
                             <td id="last">
-                                <IoIosArchive />
-                                <IoMdCreate />
+                                <IoIosArchive className="icon-table" />
+                                <IoMdCreate className="icon-table" />
                             </td>
                         </tr>
                     </tbody>

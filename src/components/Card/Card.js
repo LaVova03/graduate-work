@@ -6,7 +6,7 @@ const Card = ({ data }) => {
     const navigate = useNavigate();
 
     return (
-        <button onClick={() => navigate(`/preview/:${data.id}`)} key={data.id} className='container_card'>
+        <button onClick={() => navigate(`/preview/${data.id}`)} key={data.id} className='container_card'>
             <div id='img'>{data.img}</div>
             <div id='name'>{data.name}</div>
             <div id='price'>{data.price}</div>
