@@ -33,7 +33,7 @@ const PreviewIdCard = () => {
             <div className='head_card'>
                 <img src={RozetkaWhite} alt="logo" />
             </div>
-            <div id='body'>
+            <div className='body'>
                 <div id="header">
                     <button onClick={handlePreview} className='back-preview'></button>{product.name}
                 </div>

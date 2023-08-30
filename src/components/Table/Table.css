@@ -11,28 +11,16 @@
     line-height: normal;
 }
 
-.table>:first-child {
-    height: 50px;
-    color: #726969;
-    background: #0EC86F;
-}
-
-.table>:nth-child(2) {
+.table>:nth-child(even) {
     height: 50px;
     color: #FFF;
     background: #D9D9D9;
 }
 
-.table>:nth-child(3) {
+.table>:nth-child(odd) {
     height: 50px;
     color: #A58F8F;
     background: #0EC86F;
-}
-
-.table>:nth-child(4) {
-    height: 50px;
-    color: #FFF;
-    background: #D9D9D9;
 }
 
 #last {
@@ -45,6 +33,18 @@
     cursor: pointer;
 }
 
-.icon-table {
+.icon-pensil {
     cursor: pointer;
+    background: url(../../assets/Pensil.png);
+    height: 21px;
+    width: 23px;
+    border: 0;
+}
+
+.icon-basket {
+    cursor: pointer;
+    background: url(../../assets/Basket.png);
+    height: 19px;
+    width: 20px;
+    border: 0;
 }

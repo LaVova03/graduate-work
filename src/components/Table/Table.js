@@ -1,9 +1,8 @@
-import { IoIosArchive } from "react-icons/io";
-import { IoMdCreate } from "react-icons/io";
 import { BsArrowDownUp } from "react-icons/bs";
 import './Table.css';
 
-const Table = ({ goods }) => {
+const Table = ({ goods, handleOpen}) => {
+
     return (
         <table className='table'>
             <thead>
@@ -16,18 +15,21 @@ const Table = ({ goods }) => {
                     <th></th>
                 </tr>
             </thead>
-            {goods.map(data => {
+            {goods.map((data, item) => {
                 return (
-                    <tbody key={data.id}>
+                    <tbody key={item}>
                         <tr>
-                            <td>{data.id}</td>
+                            <td>{item}</td>
                             <td>{data.Category}</td>
                             <td>{data.Name}</td>
                             <td>{data.Quantity}</td>
                             <td>{data.Price}</td>
                             <td id="last">
-                                <IoIosArchive className="icon-table" />
-                                <IoMdCreate className="icon-table" />
+                                <button className="icon-pensil" />
+                                <button className="icon-basket"
+                                    onClick={(id) => {
+                                        handleOpen(id = data.id)
+                                    }} />
                             </td>
                         </tr>
                     </tbody>

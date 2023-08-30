@@ -65,7 +65,7 @@
     width: 300px;
 }
 
-.modal-title{
+.modal-title {
     color: #D9D9D9;
     font-family: Inter;
     font-size: 27px;
@@ -75,7 +75,7 @@
     text-align: left;
 }
 
-.btn-close{
+.btn-close {
     position: absolute;
     background: url(../../assets/Vector.png);
     width: 23px;
@@ -83,4 +83,10 @@
     border: 0;
     top: 10px;
     left: 285px;
+}
+
+.table_modal_confirm {
+    position: absolute;
+    top: 60px;
+    left: 34%;
 }

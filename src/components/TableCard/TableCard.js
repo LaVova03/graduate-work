@@ -8,14 +8,32 @@ import { useEffect, useState } from 'react';
 import { API_URL } from '../../constans/Constants';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from "react-router-dom";
+import ModalTableConfirm from '../ModalTableConfirm/ModalTableConfirm';
 
 
-const TableCard = (props) => {
+const TableCard = () => {
     const [goods, setGoods] = useState([]);
     const [show, setShow] = useState(false);
+    const [modalShow, setModalShow] = useState(false);
+    const [editId, setEditId] = useState({ id: '' });
+
     const navigate = useNavigate();
 
+    const setId = (id) => {
+        setEditId(id);
+    };
+
     const handleClose = () => setShow(false);
+
+    const handleOpen = (id) => {
+        setModalShow(true);
+        setId(id);
+    };
+
+    const closeModal = () => {
+        setModalShow(false);
+    };
+
     const handlePreview = () => navigate("/preview");
 
     useEffect(() => {
@@ -28,8 +46,22 @@ const TableCard = (props) => {
 
         if (response.ok) {
             setGoods(data)
-        }
-    }
+        };
+    };
+
+    const deleteItem = async (event) => {
+        event.preventDefault();
+
+        await fetch(`${API_URL}/Goods/${editId}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        setModalShow(false);
+        sendRequest();
+    };
+
 
     return (
         <div id="product-card" >
@@ -46,16 +78,20 @@ const TableCard = (props) => {
             </div>
             <h1 id='products'>Products</h1>
             <div className='container'>
-                <Table goods={goods} />
+                <Table goods={goods} handleOpen={handleOpen} />
             </div>
             <Modal className='modalAdd' show={show}>
                 <Modal.Header closeButton onHide={handleClose}>
                     <Modal.Title>Edit product</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Category
-
+                <Modal.Body>
+                    Category
                 </Modal.Body>
             </Modal>
+            <div className='table_modal_confirm'>
+                <ModalTableConfirm deleteItem={deleteItem}
+                    modalShow={modalShow} closeModal={closeModal} />
+            </div>
         </div >
     );
 };
