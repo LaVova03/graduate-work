@@ -6,9 +6,9 @@ import { IoIosAdd } from "react-icons/io";
 import Table from '../Table/Table';
 import { useEffect, useState } from 'react';
 import { API_URL } from '../../constans/Constants';
-import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from "react-router-dom";
 import ModalTableConfirm from '../ModalTableConfirm/ModalTableConfirm';
+import ModalEditProduct from '../ModalEditProduct/ModalEditProduct';
 
 
 const TableCard = () => {
@@ -16,6 +16,7 @@ const TableCard = () => {
     const [show, setShow] = useState(false);
     const [modalShow, setModalShow] = useState(false);
     const [editId, setEditId] = useState({ id: '' });
+    const [shake, setShake] = useState();
 
     const navigate = useNavigate();
 
@@ -38,14 +39,17 @@ const TableCard = () => {
 
     useEffect(() => {
         sendRequest();
-    }, []);
+    }, [shake]);
 
     const sendRequest = async () => {
         const response = await fetch(`${API_URL}/Goods`);
         const data = await response.json();
 
-        if (response.ok) {
-            setGoods(data)
+        if (response.ok && !shake) {
+            setGoods(data);
+        } else {
+            data.reverse();
+            setGoods(data);
         };
     };
 
@@ -59,6 +63,15 @@ const TableCard = () => {
             },
         });
         setModalShow(false);
+        sendRequest();
+    };
+
+    const changeShake = () => {
+        if (!shake) {
+            setShake(true);
+        } else {
+            setShake(false);
+        }
         sendRequest();
     };
 
@@ -78,20 +91,13 @@ const TableCard = () => {
             </div>
             <h1 id='products'>Products</h1>
             <div className='container'>
-                <Table goods={goods} handleOpen={handleOpen} />
+                <Table goods={goods} handleOpen={handleOpen} changeShake={changeShake} />
             </div>
-            <Modal className='modalAdd' show={show}>
-                <Modal.Header closeButton onHide={handleClose}>
-                    <Modal.Title>Edit product</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    Category
-                </Modal.Body>
-            </Modal>
             <div className='table_modal_confirm'>
                 <ModalTableConfirm deleteItem={deleteItem}
                     modalShow={modalShow} closeModal={closeModal} />
             </div>
+            <ModalEditProduct show={show} handleClose={handleClose} />
         </div >
     );
 };

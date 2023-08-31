@@ -1,17 +1,16 @@
-import { BsArrowDownUp } from "react-icons/bs";
 import './Table.css';
 
-const Table = ({ goods, handleOpen}) => {
+const Table = ({ goods, handleOpen, changeShake }) => {
 
     return (
         <table className='table'>
             <thead>
                 <tr>
-                    <th>ID<BsArrowDownUp id='icon' /></th>
-                    <th>Category<BsArrowDownUp id='icon' /></th>
-                    <th>Name<BsArrowDownUp id='icon' /></th>
-                    <th>Quantity<BsArrowDownUp id='icon' /></th>
-                    <th>Price (₴)<BsArrowDownUp id='icon' /></th>
+                    <th>ID<button className='icon_shake' onClick={changeShake} /></th>
+                    <th>Category<button className='icon_shake' onClick={changeShake} /></th>
+                    <th>Name<button className='icon_shake' onClick={changeShake} /></th>
+                    <th>Quantity<button className='icon_shake' onClick={changeShake} /></th>
+                    <th>Price (₴)<button className='icon_shake' onClick={changeShake} /></th>
                     <th></th>
                 </tr>
             </thead>
