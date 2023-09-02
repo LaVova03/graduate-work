@@ -1,4 +1,4 @@
-.table {
+.table1 {
     width: 800px;
     margin-bottom: 20px;
     border-collapse: collapse;
@@ -11,13 +11,13 @@
     line-height: normal;
 }
 
-.table>:nth-child(even) {
+.table1>:nth-child(even) {
     height: 50px;
     color: #FFF;
     background: #D9D9D9;
 }
 
-.table>:nth-child(odd) {
+.table1>:nth-child(odd) {
     height: 50px;
     color: #A58F8F;
     background: #0EC86F;

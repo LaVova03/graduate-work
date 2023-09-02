@@ -14,6 +14,7 @@ import ModalEditProduct from '../ModalEditProduct/ModalEditProduct';
 const TableCard = () => {
     const [goods, setGoods] = useState([]);
     const [show, setShow] = useState(false);
+    const [edit, setEdit] = useState(false);
     const [modalShow, setModalShow] = useState(false);
     const [editId, setEditId] = useState({ id: '' });
     const [shake, setShake] = useState();
@@ -24,7 +25,7 @@ const TableCard = () => {
         setEditId(id);
     };
 
-    const handleClose = () => setShow(false);
+    const handleClose = () => setShow(false) || setEdit(false);
 
     const handleOpen = (id) => {
         setModalShow(true);
@@ -42,26 +43,33 @@ const TableCard = () => {
     }, [shake]);
 
     const sendRequest = async () => {
-        const response = await fetch(`${API_URL}/Goods`);
-        const data = await response.json();
+        try {
+            const response = await fetch(`${API_URL}/Goods`);
+            const data = await response.json();
 
-        if (response.ok && !shake) {
-            setGoods(data);
-        } else {
-            data.reverse();
-            setGoods(data);
+            if (response.ok && !shake) {
+                setGoods(data);
+            } else {
+                data.reverse();
+                setGoods(data);
+            };
+        } catch {
+            console.log('Error with fetch Goods')
         };
     };
 
     const deleteItem = async (event) => {
         event.preventDefault();
-
-        await fetch(`${API_URL}/Goods/${editId}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
+        try {
+            await fetch(`${API_URL}/Goods/${editId}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+        } catch {
+            console.log('Error with fetch Goods Delete')
+        };
         setModalShow(false);
         sendRequest();
     };
@@ -75,6 +83,9 @@ const TableCard = () => {
         sendRequest();
     };
 
+    const changeEdit = () => {
+        setEdit(true);
+    };
 
     return (
         <div id="product-card" >
@@ -91,13 +102,14 @@ const TableCard = () => {
             </div>
             <h1 id='products'>Products</h1>
             <div className='container'>
-                <Table goods={goods} handleOpen={handleOpen} changeShake={changeShake} />
+                <Table goods={goods} handleOpen={handleOpen} changeShake={changeShake} changeEdit={changeEdit} />
             </div>
             <div className='table_modal_confirm'>
                 <ModalTableConfirm deleteItem={deleteItem}
                     modalShow={modalShow} closeModal={closeModal} />
             </div>
-            <ModalEditProduct show={show} handleClose={handleClose} />
+            <ModalEditProduct show={show} handleClose={handleClose} name='Add product' />
+            <ModalEditProduct edit={edit} handleClose={handleClose} name='Edit product' />
         </div >
     );
 };

@@ -19,11 +19,15 @@ const PreviewIdCard = () => {
     }, []);
 
     const sendRequestProduct = async () => {
-        const response = await fetch(`${API_URL}/Products/${id}`);
-        const data = await response.json();
+        try {
+            const response = await fetch(`${API_URL}/Products/${id}`);
+            const data = await response.json();
 
-        if (response.ok) {
-            setProduct(data)
+            if (response.ok) {
+                setProduct(data)
+            };
+        } catch {
+            console.log('Error with fetch Products ID')
         };
     };
 
