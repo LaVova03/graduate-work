@@ -2,8 +2,8 @@ import './ProductsPreview.css';
 import Card from '../../components/Card/Card';
 import RozetkaWhite from '../../assets/RozetkaWhite.png';
 
-
 function ProductsPreview(props) {
+
   const arr = [{
     id: 1,
     img: '',

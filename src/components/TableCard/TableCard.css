@@ -1,12 +1,12 @@
 #product-card {
-    height: 500px;
+    height: 599px;
     background: #44B26F;
     padding: 22px;
 }
 
 #buttons {
-    width: 1349px;
-    height: 100px;
+    width: 1340px;
+    height: 70px;
     display: inline-flex;
 }
 
@@ -52,4 +52,21 @@
     width: 1300px;
     height: 200px;
     text-align: center;
+}
+
+
+.btn-close {
+    position: absolute;
+    background: url(../../assets/Vector.png);
+    width: 23px;
+    height: 23px;
+    border: 0;
+    top: 10px;
+    left: 285px;
+}
+
+.table_modal_confirm {
+    position: absolute;
+    top: 60px;
+    left: 34%;
 }

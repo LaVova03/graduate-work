@@ -6,13 +6,13 @@
 }
 
 #oneModal {
-    top: 276px;
-    left: 569px;
+    top: 261px;
+    left: 575px;
 }
 
 #twoModal {
-    top: 348px;
-    left: 569px;
+    top: 333px;
+    left: 575px;
 }
 
 .modal__wrapper.open {

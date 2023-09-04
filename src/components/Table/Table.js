@@ -1,33 +1,34 @@
-import { IoIosArchive } from "react-icons/io";
-import { IoMdCreate } from "react-icons/io";
-import { BsArrowDownUp } from "react-icons/bs";
 import './Table.css';
 
-const Table = ({ goods }) => {
+const Table = ({ goods, handleOpen, changeShake, changeEdit}) => {
+
     return (
-        <table className='table'>
+        <table className='table1'>
             <thead>
                 <tr>
-                    <th>ID<BsArrowDownUp id='icon' /></th>
-                    <th>Category<BsArrowDownUp id='icon' /></th>
-                    <th>Name<BsArrowDownUp id='icon' /></th>
-                    <th>Quantity<BsArrowDownUp id='icon' /></th>
-                    <th>Price (₴)<BsArrowDownUp id='icon' /></th>
+                    <th>ID<button className='icon_shake' onClick={changeShake} /></th>
+                    <th>Category<button className='icon_shake' onClick={changeShake} /></th>
+                    <th>Name<button className='icon_shake' onClick={changeShake} /></th>
+                    <th>Quantity<button className='icon_shake' onClick={changeShake} /></th>
+                    <th>Price (₴)<button className='icon_shake' onClick={changeShake} /></th>
                     <th></th>
                 </tr>
             </thead>
-            {goods.map(data => {
+            {goods.map((data, item) => {
                 return (
-                    <tbody key={data.id}>
+                    <tbody key={item}>
                         <tr>
-                            <td>{data.id}</td>
+                            <td>{item}</td>
                             <td>{data.Category}</td>
                             <td>{data.Name}</td>
                             <td>{data.Quantity}</td>
                             <td>{data.Price}</td>
                             <td id="last">
-                                <IoIosArchive />
-                                <IoMdCreate />
+                                <button className="icon-pensil" onClick={changeEdit} />
+                                <button className="icon-basket"
+                                    onClick={(id) => {
+                                        handleOpen(id = data.id)
+                                    }} />
                             </td>
                         </tr>
                     </tbody>
