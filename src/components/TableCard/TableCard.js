@@ -18,14 +18,23 @@ const TableCard = () => {
     const [modalShow, setModalShow] = useState(false);
     const [editId, setEditId] = useState({ id: '' });
     const [shake, setShake] = useState();
+    const [submitFornik, setSubmitFormik] = useState('');
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        sendRequest();
+        checkSabmitFornik();
+    }, [shake, submitFornik]);
+
 
     const setId = (id) => {
         setEditId(id);
     };
 
-    const handleClose = () => setShow(false) || setEdit(false);
+    const handleClose = () => {
+        setShow(false) || setEdit(false)
+    }
 
     const handleOpen = (id) => {
         setModalShow(true);
@@ -37,10 +46,6 @@ const TableCard = () => {
     };
 
     const handlePreview = () => navigate("/preview");
-
-    useEffect(() => {
-        sendRequest();
-    }, [shake]);
 
     const sendRequest = async () => {
         try {
@@ -72,6 +77,30 @@ const TableCard = () => {
         };
         setModalShow(false);
         sendRequest();
+        setSubmitFormik('');
+    };
+
+    const postItem = async () => {
+        try {
+            await fetch(`${API_URL}/Goods`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(
+                    {
+                        Category: submitFornik.Category,
+                        Name: submitFornik.Name,
+                        Quantity: submitFornik.Quantity,
+                        Price: submitFornik.Price,
+                        Description: submitFornik.Description,
+                    }
+                )
+            });
+        } catch {
+            console.log('Error with fetch Goods Delete')
+        };
+        sendRequest();
     };
 
     const changeShake = () => {
@@ -86,6 +115,22 @@ const TableCard = () => {
     const changeEdit = () => {
         setEdit(true);
     };
+
+    const checkSabmitFornik = () => {
+        let current = 0;
+        for (let key in submitFornik) {
+            if (submitFornik[key].length === 0) {
+                break;
+            } else {
+                current++;
+            }
+
+            if (current === 5) {
+                postItem();
+            };
+        };
+    };
+
 
     return (
         <div id="product-card" >
@@ -108,7 +153,8 @@ const TableCard = () => {
                 <ModalTableConfirm deleteItem={deleteItem}
                     modalShow={modalShow} closeModal={closeModal} />
             </div>
-            <ModalEditProduct show={show} handleClose={handleClose} name='Add product' />
+            <ModalEditProduct show={show} handleClose={handleClose} setSubmitFormik={setSubmitFormik}
+                submitFornik={submitFornik} name='Add product' />
             <ModalEditProduct edit={edit} handleClose={handleClose} name='Edit product' />
         </div >
     );

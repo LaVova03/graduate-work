@@ -127,7 +127,7 @@ table {
     position: absolute;
     top: 60px;
     width: 429px;
-    height: 532px;
+    height: 545px;
     text-align: center;
     justify-content: center;
     left: 34%;
@@ -196,15 +196,31 @@ table {
     margin-top: 10px;
 }
 
-.form{
+.form {
     justify-content: center;
 }
 
-.formik_description{
+.formik_description {
     width: 320px;
     height: 100px;
     background: white;
     font-size: 14px;
     text-align: left;
     border: 0;
+}
+
+.formik_input:invalid {
+    border: 1px solid red;
+}
+
+.formik_input:valid {
+    border: 1px solid black;
+}
+
+.formik_description:invalid {
+    border: 1px solid red;
+}
+
+.formik_description:valid {
+    border: 1px solid black;
 }
