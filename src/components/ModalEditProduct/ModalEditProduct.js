@@ -4,20 +4,26 @@ import { Formik, Form, Field } from 'formik';
 import FormikControler from '../FormikControler/FormikControler';
 
 
-const ModalEditProduct = ({ show, edit, handleClose, name, setSubmitFormik }) => {
-
+const ModalEditProduct = ({ show, edit, handleClose, name, setSubmitFormik, nameEdit }) => {
     return (
         <>
             <div className={show || edit ? 'formik' : 'formic_close'}>
                 <div className='formik_header'>{name}</div>
                 <Formik
-                    initialValues={{
+                    initialValues={show ? {
                         Category: '',
                         Name: '',
                         Quantity: '',
                         Price: '',
                         Description: '',
+                    } : {
+                        Category: nameEdit.Category,
+                        Name: nameEdit.Name,
+                        Quantity: nameEdit.Quantity,
+                        Price: nameEdit.Price,
+                        Description: nameEdit.Description,
                     }}
+
                     onSubmit={(values, { resetForm }) => {
                         setSubmitFormik(values);
                         resetForm({ values: '' });
@@ -38,7 +44,7 @@ const ModalEditProduct = ({ show, edit, handleClose, name, setSubmitFormik }) =>
                                 <label><p className='br'>Price</p>
                                     <Field name="Price" className="formik_input" required />
                                 </label>
-                                <FormikControler className='formik_description' control='textarea' label='Description' name='Description' required/>
+                                <FormikControler className='formik_description' control='textarea' label='Description' name='Description' required />
                                 <p><button className='submit_formik' type="submit" value="Search">Submit</button></p>
                             </Form>
                         )

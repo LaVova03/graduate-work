@@ -19,6 +19,8 @@ const TableCard = () => {
     const [editId, setEditId] = useState({ id: '' });
     const [shake, setShake] = useState();
     const [submitFornik, setSubmitFormik] = useState('');
+    const [nameEdit, setNameEdit] = useState('')
+    const [editIdModal, setEditIdModal] = useState(null);
 
     const navigate = useNavigate();
 
@@ -77,7 +79,6 @@ const TableCard = () => {
         };
         setModalShow(false);
         sendRequest();
-        setSubmitFormik('');
     };
 
     const postItem = async () => {
@@ -114,7 +115,8 @@ const TableCard = () => {
 
     const changeEdit = () => {
         setEdit(true);
-    };
+    }
+
 
     const checkSabmitFornik = () => {
         let current = 0;
@@ -127,10 +129,15 @@ const TableCard = () => {
 
             if (current === 5) {
                 postItem();
+                current = 0;
             };
         };
     };
 
+    const setEditElement = (id, data) => {
+        setNameEdit(data);
+        setEditIdModal(id)
+    }
 
     return (
         <div id="product-card" >
@@ -147,7 +154,8 @@ const TableCard = () => {
             </div>
             <h1 id='products'>Products</h1>
             <div className='container'>
-                <Table goods={goods} handleOpen={handleOpen} changeShake={changeShake} changeEdit={changeEdit} />
+                <Table goods={goods} handleOpen={handleOpen} changeShake={changeShake}
+                    changeEdit={changeEdit} setNameEdit={setNameEdit} setEditIdModal={setEditIdModal} setEditElement={setEditElement} />
             </div>
             <div className='table_modal_confirm'>
                 <ModalTableConfirm deleteItem={deleteItem}
@@ -155,7 +163,7 @@ const TableCard = () => {
             </div>
             <ModalEditProduct show={show} handleClose={handleClose} setSubmitFormik={setSubmitFormik}
                 submitFornik={submitFornik} name='Add product' />
-            <ModalEditProduct edit={edit} handleClose={handleClose} name='Edit product' />
+            <ModalEditProduct edit={edit} handleClose={handleClose} nameEdit={nameEdit} name='Edit product' />
         </div >
     );
 };

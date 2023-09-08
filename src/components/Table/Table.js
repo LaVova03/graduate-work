@@ -1,6 +1,6 @@
 import './Table.css';
 
-const Table = ({ goods, handleOpen, changeShake, changeEdit}) => {
+const Table = ({ goods, handleOpen, changeShake, changeEdit, setEditElement }) => {
 
     return (
         <table className='table1'>
@@ -24,7 +24,7 @@ const Table = ({ goods, handleOpen, changeShake, changeEdit}) => {
                             <td>{data.Quantity}</td>
                             <td>{data.Price}</td>
                             <td id="last">
-                                <button className="icon-pensil" onClick={changeEdit} />
+                                <button className="icon-pensil" onClick={() => { changeEdit(); setEditElement(data.id, data) }} />
                                 <button className="icon-basket"
                                     onClick={(id) => {
                                         handleOpen(id = data.id)
