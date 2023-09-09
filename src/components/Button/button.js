@@ -1,10 +1,9 @@
 import './Button.css';
 
 
-const Button = ({ handlePreview, isOpen, setShow, ...props}) => {
-
+const Button = ({ handlePreview, isOpen, changeAdd, add, ...props }) => {
     return (
-        <button onClick={isOpen ? setShow : null || handlePreview ? handlePreview : null}
+        <button onClick={isOpen ? changeAdd : null || handlePreview ? handlePreview : null}
             className={'button_table'}
         >{props.children}</button>
     );

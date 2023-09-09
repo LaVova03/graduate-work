@@ -4,29 +4,31 @@ import { Formik, Form, Field } from 'formik';
 import FormikControler from '../FormikControler/FormikControler';
 
 
-const ModalEditProduct = ({ show, edit, handleClose, name, setSubmitFormik, nameEdit }) => {
+const ModalEditProduct = ({ add, edit, handleClose, name, setSubmitFormik, nameEdit, changeAdd }) => {
     return (
         <>
-            <div className={show || edit ? 'formik' : 'formic_close'}>
+            <div className={edit ? 'formik-edit' : 'formic_edit_close' && add ? 'formik_add' : 'formik_add_close'}>
                 <div className='formik_header'>{name}</div>
                 <Formik
-                    initialValues={show ? {
+                    enableReinitialize
+                    initialValues={edit ? {
+                        Category: nameEdit?.Category,
+                        Name: nameEdit?.Name,
+                        Quantity: nameEdit?.Quantity,
+                        Price: nameEdit?.Price,
+                        Description: nameEdit?.Description,
+                    } : {
                         Category: '',
                         Name: '',
                         Quantity: '',
                         Price: '',
                         Description: '',
-                    } : {
-                        Category: nameEdit.Category,
-                        Name: nameEdit.Name,
-                        Quantity: nameEdit.Quantity,
-                        Price: nameEdit.Price,
-                        Description: nameEdit.Description,
                     }}
 
                     onSubmit={(values, { resetForm }) => {
                         setSubmitFormik(values);
                         resetForm({ values: '' });
+                        changeAdd();
                     }}
                 >
                     {() => {
@@ -54,6 +56,7 @@ const ModalEditProduct = ({ show, edit, handleClose, name, setSubmitFormik, name
                     <button onClick={handleClose} className="cancel_formik">Cancel</button>
                 </>
             </div >
+
         </>
     );
 };

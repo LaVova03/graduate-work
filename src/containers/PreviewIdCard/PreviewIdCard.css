@@ -92,7 +92,7 @@
     line-height: normal;
 }
 
-#description-div{
+#description-div {
     color: black;
     font-family: Inter;
     font-size: 32px;
@@ -101,7 +101,29 @@
     line-height: normal;
 }
 
-#text{
+.description {
     margin: 10px 0 0 0;
     width: 900px;
+    height: 122px;
+    border: 0;
+    color: #000;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.header_description {
+    margin-bottom: 10px;
+    color: black;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.body_description {
+    margin-bottom: 10px;
+    color: black;
+    font-weight: 400;
+    font-size: 18px;
 }
