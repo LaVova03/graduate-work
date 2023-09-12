@@ -13,19 +13,30 @@ import ModalEditProduct from '../ModalEditProduct/ModalEditProduct';
 
 const TableCard = () => {
     const [goods, setGoods] = useState([]);
-    const [show, setShow] = useState(false);
+    const [add, setAdd] = useState(false);
     const [edit, setEdit] = useState(false);
     const [modalShow, setModalShow] = useState(false);
     const [editId, setEditId] = useState({ id: '' });
     const [shake, setShake] = useState();
+    const [submitFornik, setSubmitFormik] = useState('');
+    const [nameEdit, setNameEdit] = useState('')
+    const [editIdModal, setEditIdModal] = useState(null);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        sendRequest();
+        checkSabmitFornik();
+    }, [shake, submitFornik]);
+
 
     const setId = (id) => {
         setEditId(id);
     };
 
-    const handleClose = () => setShow(false) || setEdit(false);
+    const handleClose = () => {
+        setAdd(false) || setEdit(false)
+    }
 
     const handleOpen = (id) => {
         setModalShow(true);
@@ -37,10 +48,6 @@ const TableCard = () => {
     };
 
     const handlePreview = () => navigate("/preview");
-
-    useEffect(() => {
-        sendRequest();
-    }, [shake]);
 
     const sendRequest = async () => {
         try {
@@ -74,6 +81,54 @@ const TableCard = () => {
         sendRequest();
     };
 
+    const postItem = async () => {
+        try {
+            await fetch(`${API_URL}/Goods`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(
+                    {
+                        Category: submitFornik.Category,
+                        Name: submitFornik.Name,
+                        Quantity: submitFornik.Quantity,
+                        Price: submitFornik.Price,
+                        Description: submitFornik.Description,
+                    }
+                )
+            });
+        } catch {
+            console.log('Error with fetch Goods Delete')
+        };
+        sendRequest();
+    };
+
+    const editItem = async () => {
+        try {
+            await fetch(`${API_URL}/Goods/${editIdModal}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(
+                    {
+                        Category: submitFornik.Category,
+                        Name: submitFornik.Name,
+                        Quantity: submitFornik.Quantity,
+                        Price: submitFornik.Price,
+                        Description: submitFornik.Description,
+                    }
+                )
+            });
+        } catch {
+            console.log('Error with fetch Goods Delete')
+        };
+        setSubmitFormik('')
+        sendRequest();
+        setEditIdModal(null)
+    };
+
     const changeShake = () => {
         if (!shake) {
             setShake(true);
@@ -85,7 +140,34 @@ const TableCard = () => {
 
     const changeEdit = () => {
         setEdit(true);
+        setAdd(false)
+    }
+    const changeAdd = () => {
+        setAdd(true);
+        setEdit(false);
+    }
+
+
+    const checkSabmitFornik = () => {
+        let current = 0;
+        for (let key in submitFornik) {
+            current++;
+            if (submitFornik[key].length === 0) {
+                break;
+            } else if (current === 5 && editIdModal) {
+                editItem();
+                current = 0;
+            } else if (current === 5 && !editIdModal) {
+                postItem();
+                current = 0;
+            }
+        };
     };
+
+    const setEditElement = (id, data) => {
+        setNameEdit(data);
+        setEditIdModal(id)
+    }
 
     return (
         <div id="product-card" >
@@ -96,20 +178,23 @@ const TableCard = () => {
                     <ImUser id='logo_1' />
                 </div>
                 <div id='button_right'>
-                    <Button isOpen setShow={setShow}>Add product</Button>
+                    <Button isOpen changeAdd={changeAdd} add={add}>Add product</Button>
                     <IoIosAdd id='logo_2' />
                 </div>
             </div>
             <h1 id='products'>Products</h1>
             <div className='container'>
-                <Table goods={goods} handleOpen={handleOpen} changeShake={changeShake} changeEdit={changeEdit} />
+                <Table goods={goods} handleOpen={handleOpen} changeShake={changeShake}
+                    changeEdit={changeEdit} setEditElement={setEditElement} />
             </div>
             <div className='table_modal_confirm'>
                 <ModalTableConfirm deleteItem={deleteItem}
                     modalShow={modalShow} closeModal={closeModal} />
             </div>
-            <ModalEditProduct show={show} handleClose={handleClose} name='Add product' />
-            <ModalEditProduct edit={edit} handleClose={handleClose} name='Edit product' />
+            <ModalEditProduct add={add} handleClose={handleClose} setSubmitFormik={setSubmitFormik}
+                changeAdd={changeAdd} name='Add product' />
+            <ModalEditProduct edit={edit} handleClose={handleClose} nameEdit={nameEdit}
+                setSubmitFormik={setSubmitFormik} name='Edit product' changeAdd={changeAdd} />
         </div >
     );
 };

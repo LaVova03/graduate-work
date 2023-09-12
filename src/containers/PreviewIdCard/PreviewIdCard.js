@@ -6,8 +6,10 @@ import PatchCheck from '../../assets/PatchCheck.png';
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
+
 const PreviewIdCard = () => {
     const [product, setProduct] = useState([]);
+    const [description, setDescription] = useState('')
     const navigate = useNavigate();
 
     const { id } = useParams();
@@ -16,6 +18,7 @@ const PreviewIdCard = () => {
 
     useEffect(() => {
         sendRequestProduct();
+        sendRequestDescription();
     }, []);
 
     const sendRequestProduct = async () => {
@@ -26,6 +29,19 @@ const PreviewIdCard = () => {
             if (response.ok) {
                 setProduct(data)
             };
+        } catch {
+            console.log('Error with fetch Products ID')
+        };
+    };
+
+    const sendRequestDescription = async () => {
+        try {
+            const response = await fetch(`${API_URL}/Goods/${id}`);
+            const data = await response.json();
+
+            if (response.ok) {
+                setDescription(data)
+            }
         } catch {
             console.log('Error with fetch Products ID')
         };
@@ -52,9 +68,12 @@ const PreviewIdCard = () => {
                     </div>
                 </div>
                 <div id='description-div'>Опис <b id='description'>{product.description}</b></div>
-                <div id="text">{product.text}</div>
-                <div id="text">{product.text}</div>
-                <div id="text">{product.text}</div>
+                <div className='description' >
+                    <p className='header_description'>{description.Category || 'ID not found'}</p>
+                    <p className='body_description'>{description.Category || 'ID not found'}</p>
+                    <p className='body_description'>{description.Category || 'ID not found'}</p>
+                    <p className='body_description'>{description.Category || 'ID not found'}</p>
+                </div>
             </div>
         </div>
     );
